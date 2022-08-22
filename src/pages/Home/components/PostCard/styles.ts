@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
 
-export const Card = styled.section`
+export const Card = styled(Link)`
   width: 26rem;
   height: 16.25rem;
   padding: 2rem;
@@ -13,6 +14,8 @@ export const Card = styled.section`
 
   transition: border .2s;
 
+  text-decoration: none;
+  
   &:hover{
     border: 2px solid ${(props) => props.theme["base-label"]}
   }

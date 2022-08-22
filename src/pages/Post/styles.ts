@@ -4,6 +4,12 @@ export const PostContainer = styled.div`
   width: 100%;
   max-width: 864px;
   
+  margin-top: -5.5rem;
+`
 
-  background: ${(props) => props.theme["base-post"]}
+
+export const PostTextArea = styled.div`
+  width: 100%;
+  padding: 2.5rem 2rem;
+
 `
