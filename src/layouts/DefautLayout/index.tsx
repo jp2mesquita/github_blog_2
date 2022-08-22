@@ -5,8 +5,13 @@ import { LayoutContainer } from "./styles"
 export function DefaultLayout(){
   return(
     <LayoutContainer>
-      <Header />
-      <Outlet />
+      
+        <Header />
+        <main>
+          <Outlet />
+
+        </main>
+      
     </LayoutContainer>
   )
 }

@@ -1,9 +1,12 @@
 import { HeaderContainer } from "./styles";
 
+
+import logo from '../../assets/logo.svg'
+
 export function Header(){
   return(
     <HeaderContainer>
-      <h2>HEADER</h2>
+      <img src={logo} alt="" />
     </HeaderContainer>
   )
 }
