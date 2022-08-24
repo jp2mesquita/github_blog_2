@@ -52,5 +52,5 @@ export const Card = styled(Link)`
     -webkit-box-orient: vertical
   }
 
-  
+
 `

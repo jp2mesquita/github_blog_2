@@ -1,20 +1,52 @@
+import { useCallback, useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { useParams } from "react-router-dom";
+import { Spinner } from "../../components/Spinner";
+import { api } from "../../lib/axios";
+import { PostsProps } from "../Home";
 import { PostDetails } from "./PostDetails";
 import { PostContainer, PostTextArea } from "./styles";
 
+
+
 export function Post(){
+  
+  const { issueNumber } = useParams()
+  
+  const [ post, setPost ] = useState<PostsProps>( {} as PostsProps)
+  const [ isLoading, setIsloading ] =useState(true)
+  
+  const getPost = useCallback( 
+    async () => {
+      try{
+        setIsloading(true)
+        const response = await api.get(`/repos/jp2mesquita/GItHub_Blog_jp2mesquita/issues/${issueNumber}`)
+
+        setPost(response.data)
+      }finally{
+        setIsloading(false)
+      }
+
+  },[])
+
+  useEffect(() => {
+    getPost()
+   },[])
+
   return(
     <PostContainer>
-      <PostDetails />
-      <PostTextArea>
-      <p>
-        Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-        <br />
-        <br />
-        <strong>Dynamic typing</strong>
-        <br />
-        JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
-      </p>
-      </PostTextArea>
+      {isLoading ? (<Spinner />) : 
+        ( 
+          <>
+            <PostDetails post={post}/>
+            <PostTextArea>
+              <ReactMarkdown>
+                {post.body}
+              </ReactMarkdown>
+            </PostTextArea>
+          </>      
+        )
+      }
     </PostContainer>
   )
 }
