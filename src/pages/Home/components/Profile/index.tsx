@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faArrowUpRightFromSquare, faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +18,7 @@ interface ProfileInfoProps{
   followers: number;
 }
 
-export function Profile(){
+function ProfileComponent(){
 
   const [profileInfo, setProfileInfo] = useState<ProfileInfoProps>( {} as ProfileInfoProps)
   const [ isLoading, setIsLoading ] = useState(true)
@@ -91,3 +91,5 @@ export function Profile(){
     </ProfileContainer>
   )
 }
+
+export const Profile = memo(ProfileComponent)

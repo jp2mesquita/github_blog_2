@@ -43,15 +43,24 @@ export const ExtenalLinks = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  
   a{
     text-decoration: none;
     font: 700 .75rem Nunito, sans-serif;
     text-transform: uppercase;
     color: ${(props) => props.theme.blue};
+    border-bottom: 1px solid transparent;
 
     display: flex;
     align-items: center;
     gap: .5rem;
+
+    transition: border .2s
+
   }
- 
+
+  a:hover{
+    border-bottom: 1px solid ${(props) => props.theme.blue};
+  }
+  
 `

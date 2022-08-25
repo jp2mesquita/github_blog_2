@@ -15,8 +15,7 @@ export function PostDetails(  { post }: Props ){
   
   const createdAt = relativeDateToNowFormatter(post.created_at)
 
-  console.log(post.user.login)
-
+  
   return(
     <PostDetailsContainer>
       <ExtenalLinks>
